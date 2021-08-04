@@ -1,2 +1,2 @@
 # activityrecognition
-Collection of software created during my PhD on activity recognition
+Collection of software and datasets created during my PhD on activity recognition
