@@ -1,0 +1,109 @@
+<GRAMMAR LANGID="409">
+    <DEFINE>
+        <ID NAME="VID_Counter" VAL="10"/>
+        <ID NAME="VID_Command" VAL="11"/>
+        <ID NAME="VID_Annotate" VAL="12"/>
+	<ID NAME="VID_ActInPlace" VAL="13"/>
+	<ID NAME="VID_Toilet" VAL="14"/>
+	<ID NAME="VID_Bathroom" VAL="15"/>
+	<ID NAME="VID_Bedroom" VAL="16"/>
+	<ID NAME="VID_KitchenFood" VAL="17"/>
+	<ID NAME="VID_Feeding" VAL="18"/>
+	<ID NAME="VID_KitchenSmall" VAL="19"/>
+	<ID NAME="VID_Clean" VAL="20"/>
+	<ID NAME="VID_Leave" VAL="21"/>
+    </DEFINE>
+    <RULE ID="VID_Annotate" TOPLEVEL="ACTIVE">
+        <P>
+            <L>
+                <P>Begin</P>
+                <P>End</P>
+            </L>
+        </P>
+        <RULEREF REFID="VID_ActInPlace" /> 
+    </RULE>
+    <RULE ID="VID_ActInPlace" >
+        <L>
+	    <RULEREF REFID="VID_Leave" /> 
+            <RULEREF REFID="VID_Toilet" /> 
+            <RULEREF REFID="VID_Bathroom" /> 
+            <RULEREF REFID="VID_Bedroom" /> 
+            <RULEREF REFID="VID_KitchenFood" /> 
+            <RULEREF REFID="VID_KitchenSmall" /> 
+	    <RULEREF REFID="VID_Clean" /> 
+        </L>
+    </RULE>
+
+    <RULE ID="VID_Toilet" >
+        <L>
+		<P>use toilet</P>
+        </L>
+    </RULE>
+    <RULE ID="VID_Bathroom" >
+        <L>
+		<P>take ?a shower</P>
+		<P>brush teeth</P>
+        </L>
+    </RULE>
+    <RULE ID="VID_Bedroom" >
+        <L>
+		<P>go to bed</P>
+        </L>
+    </RULE>
+    <RULE ID="VID_Leave" >
+        <L>
+		<P>leave ?the house</P>
+		<P>receive guest</P>
+        </L>
+    </RULE>
+    <RULE ID="VID_KitchenFood" >
+        <L>
+		<P>prepare</P> 
+		<P>eat</P>
+		<P>clean up</P>
+	</L>
+	<RULEREF REFID="VID_Feeding" /> 
+    </RULE>
+
+    <RULE ID="VID_Feeding" >
+        <L>
+		<P>Breakfast</P>
+		<P>Lunch</P>
+		<P>Dinner</P>
+        </L>
+    </RULE>
+
+    <RULE ID="VID_KitchenSmall" >
+        <L>
+		<P>get ?a snack</P>
+		<P>get ?a drink</P>
+		<P>make tea</P>
+		<P>store groceries</P>		
+        </L>
+    </RULE>
+
+    <RULE ID="VID_Clean" >
+        <L>
+		<P>put items in dishwasher</P>
+		<P>unload dishwasher</P>
+		<P>put clothes in washingmachine</P>
+		<P>unload washingmachine</P>
+		<P>clean up house</P>
+        </L>
+    </RULE>
+
+
+    <RULE ID="VID_Command" TOPLEVEL="ACTIVE">
+        <P>
+            <L>
+                <P>Delete</P>
+                <P>Correct</P>
+            </L>
+        </P>
+        <P>
+            <L>
+                <P>last</P>
+            </L>
+        </P>
+    </RULE>
+</GRAMMAR>
